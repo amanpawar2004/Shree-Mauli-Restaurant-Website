@@ -53,6 +53,10 @@ function Navbar() {
             Gallery
           </NavLink>
 
+          <NavLink to="/book-table" className={navLinkClass}>
+            Book Table
+          </NavLink>
+
           <NavLink to="/contact" className={navLinkClass}>
             Contact
           </NavLink>
@@ -84,7 +88,7 @@ function Navbar() {
 
       <div
         className={`lg:hidden overflow-hidden transition-all duration-300 ${
-          menuOpen ? "max-h-96" : "max-h-0"
+          menuOpen ? "max-h-[500px]" : "max-h-0"
         } bg-[#7A1818]`}
       >
 
@@ -104,6 +108,10 @@ function Navbar() {
 
           <NavLink to="/gallery" onClick={closeMenu} className={navLinkClass}>
             Gallery
+          </NavLink>
+
+          <NavLink to="/book-table" onClick={closeMenu} className={navLinkClass}>
+            Book Table
           </NavLink>
 
           <NavLink to="/contact" onClick={closeMenu} className={navLinkClass}>

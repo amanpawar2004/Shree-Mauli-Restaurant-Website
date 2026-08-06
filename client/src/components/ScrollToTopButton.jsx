@@ -1,17 +1,20 @@
 import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { FaArrowUp } from "react-icons/fa";
 
 function ScrollToTopButton() {
-  const [visible, setVisible] = useState(false);
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
-    const toggleVisibility = () => {
-      setVisible(window.scrollY > 300);
+    const handleScroll = () => {
+      setShow(window.scrollY > 300);
     };
 
-    window.addEventListener("scroll", toggleVisibility);
+    window.addEventListener("scroll", handleScroll);
 
-    return () => window.removeEventListener("scroll", toggleVisibility);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   const scrollTop = () => {
@@ -22,14 +25,22 @@ function ScrollToTopButton() {
   };
 
   return (
-    visible && (
-      <button
-        onClick={scrollTop}
-        className="fixed bottom-42 right-6 bg-[#8B1E1E] text-white p-4 rounded-full shadow-xl hover:bg-red-800 transition-all z-50"
-      >
-        <FaArrowUp />
-      </button>
-    )
+    <AnimatePresence>
+      {show && (
+        <motion.button
+          initial={{ opacity: 0, scale: 0.5, y: 50 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.5, y: 50 }}
+          whileHover={{ scale: 1.15 }}
+          whileTap={{ scale: 0.9 }}
+          transition={{ duration: 0.3 }}
+          onClick={scrollTop}
+          className="fixed bottom-24 right-6 z-50 w-14 h-14 rounded-full bg-[#8B1E1E] text-white shadow-xl hover:bg-[#A52A2A]"
+        >
+          <FaArrowUp className="mx-auto text-lg" />
+        </motion.button>
+      )}
+    </AnimatePresence>
   );
 }
 

@@ -1,5 +1,13 @@
 {
+  "name": "shree-mauli-restaurant-website",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "client": "cd client && npm run dev",
+    "server": "cd server && npm run dev"
+  },
   "dependencies": {
+    "framer-motion": "^13.0.0",
     "react-icons": "^5.7.0"
   }
 }

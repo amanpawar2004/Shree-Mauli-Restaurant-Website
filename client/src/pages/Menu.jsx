@@ -1,15 +1,52 @@
-import { useState } from "react";
-import menu from "../data/menu";
+import { useState, useEffect } from "react";
+import { getMenu } from "../api/menuApi";
 import weeklyMenu from "../data/weeklyMenu";
 
 function Menu() {
   const [search, setSearch] = useState("");
+  const [menu, setMenu] = useState({});
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchMenu();
+  }, []);
+
+  const fetchMenu = async () => {
+    try {
+      const res = await getMenu();
+
+      const groupedMenu = {};
+
+      res.data.data.forEach((item) => {
+        if (!groupedMenu[item.category]) {
+          groupedMenu[item.category] = [];
+        }
+
+        groupedMenu[item.category].push(item);
+      });
+
+      setMenu(groupedMenu);
+    } catch (error) {
+      console.error("Error fetching menu:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex justify-center items-center text-2xl font-bold">
+        Loading Menu...
+      </div>
+    );
+  }
 
   return (
     <div className="bg-[#FFF8F0] min-h-screen py-12">
       <div className="max-w-7xl mx-auto px-5">
 
         {/* Heading */}
+
         <h1 className="text-5xl font-bold text-center text-[#8B1E1E]">
           Our Menu
         </h1>
@@ -21,7 +58,6 @@ function Menu() {
         {/* Search */}
 
         <div className="flex justify-center mt-10">
-
           <input
             type="text"
             placeholder="🔍 Search your favourite dish..."
@@ -29,17 +65,14 @@ function Menu() {
             onChange={(e) => setSearch(e.target.value)}
             className="w-full md:w-2/3 lg:w-1/2 border-2 border-yellow-400 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-yellow-500"
           />
-
         </div>
 
-        {/* Sticky Categories */}
+        {/* Categories */}
 
         <div className="sticky top-20 bg-[#FFF8F0] py-5 z-30">
-
           <div className="flex overflow-x-auto gap-3 pb-2">
 
             {Object.keys(menu).map((category) => (
-
               <a
                 key={category}
                 href={`#${category}`}
@@ -47,11 +80,9 @@ function Menu() {
               >
                 {category.toUpperCase()}
               </a>
-
             ))}
 
           </div>
-
         </div>
 
         {/* Menu */}
@@ -65,10 +96,9 @@ function Menu() {
           if (filteredItems.length === 0) return null;
 
           return (
-
             <section
-              id={category}
               key={category}
+              id={category}
               className="scroll-mt-32 mb-16"
             >
 
@@ -76,38 +106,52 @@ function Menu() {
                 {category}
               </h2>
 
-              <div className="grid md:grid-cols-2 gap-5">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
                 {filteredItems.map((item) => (
 
                   <div
-                    key={item.id}
-                    className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-6 flex justify-between items-center"
+                    key={item._id}
+                    className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
                   >
 
-                    <div>
+                    {/* Dish Image */}
 
-                      <h3 className="text-xl font-bold text-[#8B1E1E]">
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="w-full h-56 object-cover"
+                    />
+
+                    {/* Content */}
+
+                    <div className="p-5">
+
+                      <h3 className="text-2xl font-bold text-[#8B1E1E]">
                         {item.name}
                       </h3>
 
-                      <p className="text-gray-500 text-sm mt-2">
-                        Freshly prepared with authentic Maharashtrian taste.
+                      <p className="text-gray-600 mt-3">
+                        {item.description}
                       </p>
 
-                    </div>
+                      <div className="flex justify-between items-center mt-5">
 
-                    <div className="text-right">
-
-                      <div className="text-2xl font-bold text-green-700">
-                        {item.price}
-                      </div>
-
-                      {(item.id === 50 || item.id === 66) && (
-                        <span className="inline-block mt-2 bg-red-700 text-white text-xs px-3 py-1 rounded-full">
-                          Chef's Special
+                        <span className="text-2xl font-bold text-green-700">
+                          ₹{item.price}
                         </span>
-                      )}
+
+                        {item.isAvailable ? (
+                          <span className="bg-green-600 text-white px-3 py-1 rounded-full text-sm">
+                            Available
+                          </span>
+                        ) : (
+                          <span className="bg-red-600 text-white px-3 py-1 rounded-full text-sm">
+                            Out of Stock
+                          </span>
+                        )}
+
+                      </div>
 
                     </div>
 
@@ -118,7 +162,6 @@ function Menu() {
               </div>
 
             </section>
-
           );
 
         })}
