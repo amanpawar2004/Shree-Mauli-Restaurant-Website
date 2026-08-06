@@ -27,11 +27,14 @@ function AdminLogin() {
 
       const res = await loginAdmin(formData);
 
+      // Save JWT Token
       localStorage.setItem("token", res.data.token);
 
       alert("✅ Login Successful");
 
-      navigate("/dashboard");
+      // Redirect to Admin Dashboard
+      navigate("/admin/dashboard");
+
     } catch (error) {
       alert(
         error.response?.data?.message || "❌ Invalid Email or Password"
@@ -42,13 +45,16 @@ function AdminLogin() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex justify-center items-center">
-
+    <div className="min-h-screen bg-gray-100 flex justify-center items-center px-4">
       <div className="bg-white shadow-xl rounded-xl p-8 w-full max-w-md">
 
-        <h1 className="text-3xl font-bold text-center text-red-700 mb-8">
+        <h1 className="text-3xl font-bold text-center text-red-700 mb-2">
           🔐 Admin Login
         </h1>
+
+        <p className="text-center text-gray-500 mb-8">
+          Shree Mauli Restaurant Management System
+        </p>
 
         <form onSubmit={handleSubmit} className="space-y-5">
 
@@ -58,7 +64,7 @@ function AdminLogin() {
             placeholder="Enter Email"
             value={formData.email}
             onChange={handleChange}
-            className="w-full border p-3 rounded-lg"
+            className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600"
             required
           />
 
@@ -68,16 +74,16 @@ function AdminLogin() {
             placeholder="Enter Password"
             value={formData.password}
             onChange={handleChange}
-            className="w-full border p-3 rounded-lg"
+            className="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600"
             required
           />
 
           <button
             type="submit"
             disabled={loading}
-            className={`w-full py-3 rounded-lg text-white font-bold ${
+            className={`w-full py-3 rounded-lg text-white font-bold transition ${
               loading
-                ? "bg-gray-500"
+                ? "bg-gray-500 cursor-not-allowed"
                 : "bg-red-700 hover:bg-red-800"
             }`}
           >
@@ -85,9 +91,7 @@ function AdminLogin() {
           </button>
 
         </form>
-
       </div>
-
     </div>
   );
 }
