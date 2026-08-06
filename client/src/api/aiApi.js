@@ -1,11 +1,10 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:5000/api/ai",
+  baseURL: import.meta.env.VITE_API_URL + "/api/ai",
 });
 
-export const askAI = async (question) => {
-  return API.post("/recommend", {
+export const askAI = (question) =>
+  API.post("/recommend", {
     question,
   });
-};
