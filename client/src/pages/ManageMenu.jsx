@@ -41,9 +41,7 @@ function ManageMenu() {
     }
   };
 
-  if (loading) {
-    return <Loader />;
-  }
+  if (loading) return <Loader />;
 
   return (
     <div className="min-h-screen bg-gray-100 py-10">
@@ -57,7 +55,7 @@ function ManageMenu() {
           </h1>
 
           <Link
-            to="/add-menu"
+            to="/admin/add-menu"
             className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-bold"
           >
             ➕ Add Dish
@@ -70,7 +68,6 @@ function ManageMenu() {
           <table className="w-full">
 
             <thead className="bg-red-700 text-white">
-
               <tr>
                 <th className="py-4">Image</th>
                 <th>Dish</th>
@@ -79,7 +76,6 @@ function ManageMenu() {
                 <th>Available</th>
                 <th>Action</th>
               </tr>
-
             </thead>
 
             <tbody>
@@ -99,10 +95,9 @@ function ManageMenu() {
                     key={item._id}
                     className="border-b text-center hover:bg-gray-50"
                   >
-
                     <td className="py-3">
                       <img
-                        src={item.image}
+                        src={item.image || "https://placehold.co/80x80?text=No+Image"}
                         alt={item.name}
                         className="w-20 h-20 object-cover rounded-lg mx-auto"
                       />
@@ -123,7 +118,7 @@ function ManageMenu() {
                     <td className="space-x-3">
 
                       <Link
-                        to={`/edit-menu/${item._id}`}
+                        to={`/admin/edit-menu/${item._id}`}
                         className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg"
                       >
                         Edit
