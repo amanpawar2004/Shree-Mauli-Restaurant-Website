@@ -4,6 +4,7 @@ import {
   FaPhoneAlt,
   FaBars,
   FaTimes,
+  FaUserShield,
 } from "react-icons/fa";
 
 function Navbar() {
@@ -18,11 +19,9 @@ function Navbar() {
 
   return (
     <nav className="sticky top-0 z-50 bg-[#8B1E1E] shadow-lg">
-
       <div className="max-w-7xl mx-auto px-5 lg:px-8 h-20 flex justify-between items-center">
 
         {/* Logo */}
-
         <div>
           <h1 className="text-2xl md:text-3xl font-bold text-white">
             श्री माऊली
@@ -34,7 +33,6 @@ function Navbar() {
         </div>
 
         {/* Desktop Menu */}
-
         <div className="hidden lg:flex items-center gap-8 text-lg text-white">
 
           <NavLink to="/" className={navLinkClass}>
@@ -61,20 +59,26 @@ function Navbar() {
             Contact
           </NavLink>
 
+          <NavLink
+            to="/admin/login"
+            className="bg-yellow-400 hover:bg-yellow-300 text-black px-4 py-2 rounded-lg font-semibold flex items-center gap-2 transition"
+          >
+            <FaUserShield />
+            Admin
+          </NavLink>
+
         </div>
 
-        {/* Desktop Call */}
-
+        {/* Desktop Call Button */}
         <a
           href="tel:+919921291202"
-          className="hidden lg:flex bg-yellow-400 hover:bg-yellow-300 text-black px-5 py-2 rounded-xl items-center gap-2 font-semibold transition"
+          className="hidden lg:flex bg-green-600 hover:bg-green-500 text-white px-5 py-2 rounded-xl items-center gap-2 font-semibold transition"
         >
           <FaPhoneAlt />
           Call Now
         </a>
 
         {/* Mobile Menu Button */}
-
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           className="lg:hidden text-white text-3xl"
@@ -85,13 +89,11 @@ function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-
       <div
         className={`lg:hidden overflow-hidden transition-all duration-300 ${
-          menuOpen ? "max-h-[500px]" : "max-h-0"
+          menuOpen ? "max-h-[600px]" : "max-h-0"
         } bg-[#7A1818]`}
       >
-
         <div className="flex flex-col px-6 py-5 space-y-5 text-white text-lg">
 
           <NavLink to="/" onClick={closeMenu} className={navLinkClass}>
@@ -110,26 +112,41 @@ function Navbar() {
             Gallery
           </NavLink>
 
-          <NavLink to="/book-table" onClick={closeMenu} className={navLinkClass}>
+          <NavLink
+            to="/book-table"
+            onClick={closeMenu}
+            className={navLinkClass}
+          >
             Book Table
           </NavLink>
 
-          <NavLink to="/contact" onClick={closeMenu} className={navLinkClass}>
+          <NavLink
+            to="/contact"
+            onClick={closeMenu}
+            className={navLinkClass}
+          >
             Contact
+          </NavLink>
+
+          <NavLink
+            to="/admin/login"
+            onClick={closeMenu}
+            className="bg-yellow-400 hover:bg-yellow-300 text-black rounded-xl px-5 py-3 flex items-center justify-center gap-3 font-semibold transition"
+          >
+            <FaUserShield />
+            Admin Login
           </NavLink>
 
           <a
             href="tel:+919921291202"
-            className="bg-yellow-400 text-black rounded-xl px-5 py-3 flex items-center justify-center gap-3 font-semibold"
+            className="bg-green-600 text-white rounded-xl px-5 py-3 flex items-center justify-center gap-3 font-semibold"
           >
             <FaPhoneAlt />
             Call Restaurant
           </a>
 
         </div>
-
       </div>
-
     </nav>
   );
 }
