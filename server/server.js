@@ -4,10 +4,7 @@ require("dotenv").config();
 
 const connectDB = require("./config/db");
 
-// ==========================
-// Import Routes
-// ==========================
-
+// Routes
 const menuRoutes = require("./routes/menuRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 const bookingRoutes = require("./routes/bookingRoutes");
@@ -16,42 +13,27 @@ const aiRoutes = require("./routes/aiRoutes");
 
 const app = express();
 
-// ==========================
 // Connect Database
-// ==========================
-
 connectDB();
 
-// ==========================
 // Middleware
-// ==========================
+app.use(
+  cors({
+    origin: process.env.CLIENT_URL || "*",
+    credentials: true,
+  })
+);
 
-app.use(cors());
 app.use(express.json());
 
-// ==========================
-// API Routes
-// ==========================
-
-// Menu APIs
+// Routes
 app.use("/api/menu", menuRoutes);
-
-// Admin APIs
 app.use("/api/admin", adminRoutes);
-
-// Booking APIs
 app.use("/api/bookings", bookingRoutes);
-
-// Contact Message APIs
 app.use("/api/messages", messageRoutes);
-
-// AI Food Recommendation APIs
 app.use("/api/ai", aiRoutes);
 
-// ==========================
-// Home Route
-// ==========================
-
+// Health Check
 app.get("/", (req, res) => {
   res.status(200).json({
     success: true,
@@ -60,10 +42,7 @@ app.get("/", (req, res) => {
   });
 });
 
-// ==========================
-// 404 Route
-// ==========================
-
+// 404
 app.use((req, res) => {
   res.status(404).json({
     success: false,
@@ -71,16 +50,12 @@ app.use((req, res) => {
   });
 });
 
-// ==========================
-// Start Server
-// ==========================
-
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
   console.log("======================================");
   console.log("🚀 Shree Mauli Restaurant Server");
-  console.log(`🌐 Running on http://localhost:${PORT}`);
-  console.log("🤖 Gemini AI Assistant Enabled");
+  console.log(`🌐 Running on Port ${PORT}`);
+  console.log("🤖 Groq AI Assistant Enabled");
   console.log("======================================");
 });
