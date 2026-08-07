@@ -53,7 +53,7 @@ function Footer() {
 
               <div className="flex gap-3">
                 <FaPhoneAlt />
-                <span>+91 9921291202</span>
+                <span>+91 8010167434</span>
               </div>
 
               <div className="flex gap-3">
@@ -63,7 +63,7 @@ function Footer() {
 
               <div className="flex gap-3">
                 <FaClock />
-                <span>11:00 AM – 11:00 PM</span>
+                <span>10:00 AM – 11:00 PM</span>
               </div>
 
             </div>
@@ -145,7 +145,7 @@ function Footer() {
                   scale: 1.25,
                   rotate: 10,
                 }}
-                href="https://wa.me/919921291202"
+                href="https://wa.me/918010167434"
                 target="_blank"
                 rel="noreferrer"
               >

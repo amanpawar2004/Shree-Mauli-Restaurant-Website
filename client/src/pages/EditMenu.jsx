@@ -54,7 +54,7 @@ function EditMenu() {
 
       alert("✅ Menu Updated Successfully");
 
-      navigate("/manage-menu");
+      navigate("/admin/manage-menu");
     } catch (error) {
       console.error(error);
       alert("❌ Failed to update menu.");

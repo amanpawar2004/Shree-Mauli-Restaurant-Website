@@ -62,7 +62,7 @@ function AIChat() {
     <>
       <button
         onClick={() => setOpen(!open)}
-        className="fixed bottom-6 left-6 bg-red-700 text-white w-16 h-16 rounded-full shadow-xl z-50"
+        className="fixed bottom-6 left-6 w-16 h-16 bg-red-700 hover:bg-red-800 rounded-full shadow-2xl z-50 flex items-center justify-center text-white transition-all duration-300 hover:scale-110"
       >
         {open ? <FaTimes size={25} /> : <FaRobot size={28} />}
       </button>

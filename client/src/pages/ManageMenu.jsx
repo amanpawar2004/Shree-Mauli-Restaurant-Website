@@ -17,6 +17,7 @@ function ManageMenu() {
       setMenu(res.data.data);
     } catch (error) {
       console.log(error);
+      alert("Failed to fetch menu.");
     } finally {
       setLoading(false);
     }
@@ -41,16 +42,17 @@ function ManageMenu() {
     }
   };
 
-  if (loading) return <Loader />;
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <div className="min-h-screen bg-gray-100 py-10">
-
       <div className="max-w-7xl mx-auto px-5">
 
         <div className="flex justify-between items-center mb-8">
 
-          <h1 className="text-5xl font-bold text-[#8B1E1E]">
+          <h1 className="text-4xl font-bold text-[#8B1E1E]">
             🍽️ Manage Menu
           </h1>
 
@@ -95,9 +97,14 @@ function ManageMenu() {
                     key={item._id}
                     className="border-b text-center hover:bg-gray-50"
                   >
+
                     <td className="py-3">
                       <img
-                        src={item.image || "https://placehold.co/80x80?text=No+Image"}
+                        src={
+                          item.image
+                            ? item.image
+                            : "https://placehold.co/80x80?text=No+Image"
+                        }
                         alt={item.name}
                         className="w-20 h-20 object-cover rounded-lg mx-auto"
                       />
@@ -115,7 +122,7 @@ function ManageMenu() {
                       {item.isAvailable ? "✅" : "❌"}
                     </td>
 
-                    <td className="space-x-3">
+                    <td className="space-x-2">
 
                       <Link
                         to={`/admin/edit-menu/${item._id}`}
@@ -144,7 +151,6 @@ function ManageMenu() {
         </div>
 
       </div>
-
     </div>
   );
 }
