@@ -1,1 +1,32 @@
 @import "tailwindcss";
+
+@import "@fontsource/poppins/400.css";
+@import "@fontsource/poppins/500.css";
+@import "@fontsource/poppins/600.css";
+@import "@fontsource/poppins/700.css";
+
+@import "@fontsource/playfair-display/600.css";
+@import "@fontsource/playfair-display/700.css";
+
+:root {
+  font-family: "Poppins", sans-serif;
+  color: #1f2937;
+  background: #fff9f3;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #fff9f3;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}

@@ -62,7 +62,7 @@ function AdminDashboard() {
       <div className="bg-red-800 text-white p-5 flex justify-between items-center shadow-lg">
 
         <h1 className="text-3xl font-bold">
-           Shree Mauli Admin Dashboard
+          🍽️ Shree Mauli Admin Panel
         </h1>
 
         <button
@@ -85,21 +85,21 @@ function AdminDashboard() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
           <div className="bg-white rounded-2xl shadow-xl p-8 text-center">
-            <h3 className="text-xl font-bold"> Menu Items</h3>
+            <h3 className="text-xl font-bold">🍛 Menu Items</h3>
             <p className="text-5xl font-bold text-red-700 mt-4">
               {menuCount}
             </p>
           </div>
 
           <div className="bg-white rounded-2xl shadow-xl p-8 text-center">
-            <h3 className="text-xl font-bold"> Bookings</h3>
+            <h3 className="text-xl font-bold">📅 Bookings</h3>
             <p className="text-5xl font-bold text-purple-700 mt-4">
               {bookingCount}
             </p>
           </div>
 
           <div className="bg-white rounded-2xl shadow-xl p-8 text-center">
-            <h3 className="text-xl font-bold"> Messages</h3>
+            <h3 className="text-xl font-bold">📩 Messages</h3>
             <p className="text-5xl font-bold text-blue-700 mt-4">
               {messageCount}
             </p>
@@ -115,28 +115,28 @@ function AdminDashboard() {
             to="/admin/add-menu"
             className="bg-red-700 hover:bg-red-800 text-white rounded-xl p-6 text-center transition"
           >
-            <h3 className="text-xl font-bold"> Add Menu</h3>
+            <h3 className="text-xl font-bold">➕ Add Menu</h3>
           </Link>
 
           <Link
             to="/admin/manage-menu"
             className="bg-green-700 hover:bg-green-800 text-white rounded-xl p-6 text-center transition"
           >
-            <h3 className="text-xl font-bold">Manage Menu</h3>
+            <h3 className="text-xl font-bold">📋 Manage Menu</h3>
           </Link>
 
           <Link
             to="/admin/manage-bookings"
             className="bg-purple-700 hover:bg-purple-800 text-white rounded-xl p-6 text-center transition"
           >
-            <h3 className="text-xl font-bold">Bookings</h3>
+            <h3 className="text-xl font-bold">📅 Bookings</h3>
           </Link>
 
           <Link
             to="/admin/manage-messages"
             className="bg-indigo-700 hover:bg-indigo-800 text-white rounded-xl p-6 text-center transition"
           >
-            <h3 className="text-xl font-bold">Messages</h3>
+            <h3 className="text-xl font-bold">📩 Messages</h3>
           </Link>
 
           <a
