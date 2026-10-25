@@ -154,7 +154,7 @@ function Hero() {
 
               {/* WhatsApp */}
               <a
-                href="https://wa.me/919921291202"
+                href="https://wa.me/8010167434"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-green-600 bg-white px-7 py-3.5 font-bold text-green-700 shadow-md transition-all duration-300 hover:-translate-y-1 hover:bg-green-600 hover:text-white hover:shadow-xl"
