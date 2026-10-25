@@ -53,13 +53,10 @@ function Contact() {
 
   return (
     <div className="bg-[#FFF8F0] min-h-screen py-16">
-
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Heading */}
-
         <div className="text-center mb-12">
-
           <h1 className="text-5xl font-bold text-[#8B1E1E]">
             Contact Us
           </h1>
@@ -67,15 +64,12 @@ function Contact() {
           <p className="text-lg text-gray-600 mt-4">
             We'd love to serve you. Visit us or get in touch.
           </p>
-
         </div>
 
         {/* Main Grid */}
-
         <div className="grid lg:grid-cols-3 gap-10">
 
           {/* Contact Info */}
-
           <div className="bg-white rounded-2xl shadow-lg p-8">
 
             <h2 className="text-3xl font-bold text-[#8B1E1E] mb-6">
@@ -84,11 +78,14 @@ function Contact() {
 
             <div className="space-y-6">
 
+              {/* Address */}
               <div className="flex items-start gap-4">
                 <FaMapMarkerAlt className="text-red-700 text-2xl mt-1" />
 
                 <div>
-                  <h3 className="font-bold">Address</h3>
+                  <h3 className="font-bold">
+                    Address
+                  </h3>
 
                   <p>
                     Shri Mauli Restaurant
@@ -98,14 +95,13 @@ function Contact() {
                     Amravati, Maharashtra 444606
                   </p>
                 </div>
-
               </div>
 
+              {/* Phone */}
               <div className="flex items-start gap-4">
                 <FaPhoneAlt className="text-red-700 text-2xl mt-1" />
 
                 <div>
-
                   <h3 className="font-bold">
                     Phone
                   </h3>
@@ -116,16 +112,14 @@ function Contact() {
                   >
                     +91 8010167434
                   </a>
-
                 </div>
-
               </div>
 
+              {/* WhatsApp */}
               <div className="flex items-start gap-4">
                 <FaWhatsapp className="text-green-600 text-2xl mt-1" />
 
                 <div>
-
                   <h3 className="font-bold">
                     WhatsApp
                   </h3>
@@ -133,37 +127,33 @@ function Contact() {
                   <a
                     href="https://wa.me/918010167434"
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     className="text-green-600 hover:underline"
                   >
                     Chat on WhatsApp
                   </a>
-
                 </div>
-
               </div>
 
+              {/* Opening Hours */}
               <div className="flex items-start gap-4">
                 <FaClock className="text-red-700 text-2xl mt-1" />
 
                 <div>
-
                   <h3 className="font-bold">
                     Opening Hours
                   </h3>
 
-                  <p>10:00 AM - 11:00 PM</p>
-
+                  <p>
+                    10:00 AM - 11:00 PM
+                  </p>
                 </div>
-
               </div>
 
             </div>
-
           </div>
 
           {/* Contact Form */}
-
           <div className="lg:col-span-2 bg-white rounded-2xl shadow-lg p-8">
 
             <h2 className="text-3xl font-bold text-[#8B1E1E] mb-6">
@@ -234,15 +224,11 @@ function Contact() {
               </button>
 
             </form>
-
           </div>
-
         </div>
 
         {/* Google Map */}
-
         <div className="mt-12">
-
           <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
 
             <iframe
@@ -255,11 +241,9 @@ function Contact() {
             ></iframe>
 
           </div>
-
         </div>
 
       </div>
-
     </div>
   );
 }
